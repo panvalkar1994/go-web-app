@@ -1,13 +1,17 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [ngClass]="{hidden: !(isHandset$ | async) }"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>person</mat-icon>Profile</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>search</mat-icon>Search</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon> local_offer</mat-icon>Offers</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>add_shopping_cart</mat-icon>Booking Details</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>cancel</mat-icon>Cancellations</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>settings</mat-icon>Settings</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" >About Us</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +24,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>go-web-app</span>
+      <span>Go</span>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>
