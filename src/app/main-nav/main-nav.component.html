@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [ngClass]="{hidden: !(isHandset$ | async) }"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>person</mat-icon>Profile</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>search</mat-icon>Search</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon> local_offer</mat-icon>Offers</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>add_shopping_cart</mat-icon>Booking Details</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>cancel</mat-icon>Cancellations</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" ><mat-icon>settings</mat-icon>Settings</a>
+      <a mat-list-item routerLink="/routePath" routerLinkActive="active" >About Us</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Go</span>
+      <span class="spacer"></span>
+      <div  *ngIf="!(isHandset$ | async)">
+        <button mat-button [matMenuTriggerFor]="userMenu">Profile</button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Profile</a></button>
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Offers</a></button>
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Booking Details</a></button>
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Cancellations</a></button>
+        </mat-menu>
+
+        <button mat-button><a routerLink="/routePath" routerLinkActive="active" ></a>Settings</button>
+        <button mat-button><a routerLink="/routePath" routerLinkActive="active" ></a>About Us</button>
+
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>
