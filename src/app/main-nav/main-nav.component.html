@@ -25,6 +25,20 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Go</span>
+      <span class="spacer"></span>
+      <div  *ngIf="!(isHandset$ | async)">
+        <button mat-button [matMenuTriggerFor]="userMenu">Profile</button>
+        <mat-menu #userMenu="matMenu">
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Profile</a></button>
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Offers</a></button>
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Booking Details</a></button>
+          <button mat-menu-item><a routerLink="/routePath" routerLinkActive="active" >Cancellations</a></button>
+        </mat-menu>
+
+        <button mat-button><a routerLink="/routePath" routerLinkActive="active" ></a>Settings</button>
+        <button mat-button><a routerLink="/routePath" routerLinkActive="active" ></a>About Us</button>
+
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>
